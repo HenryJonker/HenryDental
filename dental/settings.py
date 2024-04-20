@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dental.urls'
@@ -126,6 +130,8 @@ STATICFILES_DIRS = [
 os.path.join(BASE_DIR,'static'),
 ]
 
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -148,3 +154,6 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'henryjonker67@hotmail.com'
 EMAIL_HOST_PASSWORD = 'Solange196798'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+django_heroku.settings(locals())
+
