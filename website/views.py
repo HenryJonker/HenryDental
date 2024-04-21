@@ -15,7 +15,7 @@ def contact(request):
 			message_name, # subject
 			message, # message
 			message_email, # from email
-			['rudolfjonker@hotmail.com'], # To Email
+			['henryjonker67@hotmail.com'], # To Email
 			# ['henryjonker67@hotmail.com'], # To Email
 			fail_silently=False,
 			)
